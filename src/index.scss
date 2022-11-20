@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'UA_Blade_Runner';
+  src: url(../public/fonts/ua_blade_runner_bolditalic.ttf);
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  * {
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  h3 {
+    margin: 0;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+  
+  img {
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+}
