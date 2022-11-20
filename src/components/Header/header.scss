@@ -1,0 +1,48 @@
+.header {
+  background: #1C1A19;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 45px;
+  
+  &__title {
+    font-family: 'UA_Blade_Runner', 'Roboto', sans-serif;
+    margin-left: 16px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+  }
+  
+  &__logo {
+    cursor: pointer;
+  }
+  
+  &__title--loft {
+    color: #FFFFFF;
+  }
+  
+  &__title--taxi {
+    color: #FDBF5A;
+  }
+  
+  &__item {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    margin-right: 45px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+}
