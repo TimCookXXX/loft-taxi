@@ -1,3 +1,26 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  &__left {
+    width: 35%;
+    background: #1C1A19;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__right {
+    width: 65%;
+    background: url('../../assets/images/map-one.png') center top no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -11,7 +34,7 @@
     flex-direction: column;
     margin-bottom: 28px;
 
-    &:nth-last-child(3) {
+    &:nth-last-child(2) {
       margin-bottom: 50px;
     }
 
@@ -31,7 +54,7 @@
       outline: none;
       transition: 0.3s;
 
-      &:nth-last-child(3) {
+      &:nth-last-child(2) {
         margin-bottom: 16px;
       }
 
@@ -44,15 +67,6 @@
         border-color: #2D7EF6;
         transition: 0.3s;
       }
-    }
-
-    &--reset {
-      display: flex;
-      justify-content: flex-end;
-      color: #828282;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
     }
   }
 
@@ -73,7 +87,7 @@
     font-weight: 400;
     font-size: 25px;
     line-height: 29px;
-    padding: 6px 60px;
+    padding: 6px 0;
     display: flex;
     justify-content: center;
     margin-bottom: 33px;
@@ -91,6 +105,7 @@
     line-height: 19px;
     display: flex;
     justify-content: center;
+    margin-top: 33px;
 
     &--text {
       margin-right: 5px;
@@ -99,6 +114,7 @@
 
     &--registr {
       color: #FDBF5A;
+      cursor: pointer;
     }
   }
 }
