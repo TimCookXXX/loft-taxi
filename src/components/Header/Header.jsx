@@ -1,30 +1,37 @@
 import React from 'react'
 import './header.scss'
-import logoHeader from '../../assets/images/logo.svg'
+import logoMain from '../../assets/images/logo-main.svg'
+import PropTypes from 'prop-types'
 
-function Header({ onNav }) {
-  const navTo = (page) => () => onNav(page)
+function Header(events) {
+  const {clickNavItem, activeContent} = events
+  
+  Header.propTypes = {
+    clickNavItem: PropTypes.func.isRequired,
+    activeContent: PropTypes.string.isRequired
+  }
+
+    const navList = [
+      {name: 'map', value: 'Карта'},
+      {name: 'profile', value: 'Профиль'},
+      {name: 'out', value: 'Выйти'}
+    ]
   return (
-    <div className='header'>
-      <div className="header__left">
-        <img className="header__logo" onClick={navTo('main')} src={logoHeader} alt="logo" />
-        <div className="header__title">
-          <span className="header__title--loft">loft</span>
-          <span className="header__title--taxi">taxi</span>
-        </div>
+    <header className='header'>
+      <div className='header__logo'>
+        <img src={logoMain} alt="Logo" />
       </div>
-      <ul className="header__right">
-        <li className="header__item">
-          <button className="header__item--text" onClick={navTo('main')}>Карта</button>
-        </li>
-        <li className="header__item">
-          <button className="header__item--text" onClick={navTo('profile')}>Профиль</button>
-        </li>
-        <li className="header__item">
-          <button className="header__item--text" onClick={navTo('login')}>Выйти</button>
-        </li>
+      <ul className='header__navlist'>
+        {navList.map((el, i) => (
+        <li
+        key={i}
+        data-active={activeContent === el.name}
+        className="header__navitem"
+        onClick={() => clickNavItem(el)}
+        >{el.value}</li>
+        ))}
       </ul>
-    </div>
+    </header>
   )
 }
 

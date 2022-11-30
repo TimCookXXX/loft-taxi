@@ -3,46 +3,37 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 45px;
-  
-  &__title {
-    font-family: 'UA_Blade_Runner', 'Roboto', sans-serif;
-    margin-left: 16px;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 36px;
-  }
-  
+
   &__logo {
-    cursor: pointer;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
   }
   
-  &__title--loft {
-    color: #FFFFFF;
+  &__navlist {
+    display: flex;
+    align-items: center;
   }
-  
-  &__title--taxi {
-    color: #FDBF5A;
-  }
-  
-  &__item {
-    color: #FFFFFF;
+
+  &__navitem {
     font-weight: 400;
     font-size: 21px;
     line-height: 25px;
-    margin-right: 45px;
+    cursor: pointer;
+    transition: .3s;
+    position: relative;
+    color: #FFFFFF;
+    margin-right: 44px;
 
     &:last-child {
       margin-right: 0;
     }
-  }
-  
-  &__left {
-    display: flex;
-    align-items: center;
-  }
-  
-  &__right {
-    display: flex;
-    align-items: center;
+
+    &[data-active='true'] {
+      color: #FDBF5A;
+      pointer-events: none;
+    }
   }
 }
