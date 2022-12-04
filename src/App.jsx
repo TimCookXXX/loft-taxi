@@ -2,8 +2,8 @@ import React from 'react'
 import './App.css'
 import Unauthorized from './pages/Unauthorized/Unauthorized'
 import Authorized from './pages/Authorized/Authorized'
-import { WithAuth } from './contexsts/AuthContext'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 function App(props) {
   const {isLoggedIn} = props
@@ -23,4 +23,6 @@ function App(props) {
   )
 }
 
-export default WithAuth(App)
+export default connect(
+  (state) => ({isLoggedIn: state.AuthReducer.isLoggedIn})
+)(App)
