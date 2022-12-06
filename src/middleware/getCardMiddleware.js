@@ -1,6 +1,6 @@
-import { showCardData } from '../src/actions'
-import { serverGetCard } from './api'
-import { GET_CARD } from '../src/actions'
+import { showCardData } from '../actions'
+import { serverGetCard } from '../api'
+import { GET_CARD } from '../actions'
 
 export const getCardMiddleware = (store) => (next) => async (action) => {
     if (action.type === GET_CARD) {

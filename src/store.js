@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers'
-import { authMiddleware } from './authMiddleware'
-import { getCardMiddleware } from './getCardMiddleware'
-import { saveCardMiddleware } from './saveCardMiddleware'
+import { authMiddleware } from './middleware/authMiddleware'
+import { getCardMiddleware } from './middleware/getCardMiddleware'
+import { saveCardMiddleware } from './middleware/saveCardMiddleware'
 
 function saveToLocalStorage(state) {
   try {

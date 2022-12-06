@@ -11,7 +11,7 @@ import Input from '@mui/material/Input'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-function Profile() {
+function Profile({saveCard, getCard}) {
   // const [cardNumber, setCardNumber] = useState({cardNumber})
   const [cardNumber, setCardNumber] = useState('')
   const [expiryDate, setExpiryDate] = useState('')
@@ -20,7 +20,7 @@ function Profile() {
 
   useEffect(() => {
     getCard()
-  },[])
+  },[getCard])
 
   const handleSubmit = (e) => {
     e.preventDefault()
