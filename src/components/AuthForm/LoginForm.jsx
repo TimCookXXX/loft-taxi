@@ -8,7 +8,6 @@ function LoginForm(events) {
   // const {changeSing} = events
 
   return (
-    <>
       <div className="form">
         <span className="form__title">Войти</span>
         <label className="form__item">
@@ -25,7 +24,6 @@ function LoginForm(events) {
           <Link to='/registration' className="form__registration--registr">Регистрация</Link>
         </div>
       </div>
-    </>
   )
 }
 

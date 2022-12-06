@@ -2,8 +2,7 @@ import React from 'react'
 import './loginForm.scss'
 import Button from '../../ui/Button'
 // import PropTypes from 'prop-types'
-import LoginForm from './LoginForm'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function RegistrForm(events) {
 
@@ -25,7 +24,7 @@ function RegistrForm(events) {
       <Button className="form__button" type="submit">Зарегистрироваться</Button>
       <div className="form__registration">
         <span className="form__registration--text">Уже зарегестрированны?</span>
-        <Link to='/login' className="form__registration--registr">Войти</Link>
+        <Link to='/' className="form__registration--registr">Войти</Link>
       </div>
     </div>
   )

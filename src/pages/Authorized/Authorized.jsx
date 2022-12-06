@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import Header from '../../components/Header/Header'
 import Map from '../../components/Map/Map'
-// import Profile from '../../components/Profile/Profile'
+import Profile from '../../components/Profile/Profile'
 import './authorized.scss'
+import { PrivateRoute } from '../../PrivateRoute'
 import { connect } from 'react-redux'
 import { logOut } from '../../actions'
 import PropTypes from 'prop-types'
+import { Route, Switch } from 'react-router-dom'
 
 function Authorized(events) {
   const {logOut} = events
@@ -29,6 +31,10 @@ function Authorized(events) {
       <Header clickNavItem={clickNavItemFunc} activeContent={content} />
       <div className='main__content'>
         <Map />
+        <Switch>
+          <PrivateRoute path='/profile' component={Profile} />
+          <Route path='/' />
+        </Switch>
         {/* {
           pages[content] && (
             <div className='window' onClick={() => setContent('map')}>

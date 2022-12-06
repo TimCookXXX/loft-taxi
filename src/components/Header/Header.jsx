@@ -3,7 +3,7 @@ import './header.scss'
 import logoMain from '../../assets/images/logo-main.svg'
 import PropTypes from 'prop-types'
 import {Link, Switch, Route} from 'react-router-dom'
-import Profile from '../Profile/Profile'
+// import Profile from '../Profile/Profile'
 import Map from '../Map/Map'
 import { PrivateRoute } from '../../PrivateRoute'
 
@@ -39,7 +39,6 @@ function Header(events) {
     </header>
     <Switch>
         <PrivateRoute path='/map' component={Map} />
-        <PrivateRoute path='/profile' component={Profile} />
         <Route path='/' />
     </Switch>
     </>
