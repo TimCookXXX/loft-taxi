@@ -1,0 +1,89 @@
+.form__wrapper {
+  position: absolute;
+  z-index: 1000;
+  top: 40px;
+  left: 40px;
+
+  .select {
+    height: 40px;
+    text-indent: 30px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    &::before {
+      border-bottom: none;
+    }
+    &::after {
+      border-bottom: 1px solid #E0E0E0;
+    }
+    &:focus {
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    &__form {
+      border-bottom: 1px solid #E0E0E0;
+    }
+  }
+
+  .form__control {
+    width: 90%;
+    margin: 5px 4.67% 0 4.67%;
+  }
+
+  .form__content {
+    width: 486px;
+    height: 471px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  .submit__form {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+
+    .price__form {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}
+
+.select__start {
+  position: absolute;
+}
+
+.select__start::before {
+    position: absolute;
+    content: url(../../assets/images/round.svg);
+    width: 14px;
+    height: 14px;
+    top: 23px;
+    left: 5px;
+}
+
+.select__end {
+  position: absolute;
+}
+
+.select__end::before {
+  position: absolute;
+  content: url(../../assets/images/triangle.svg);
+  width: 16.5px;
+  height: 16.5px;
+  top: 25px;
+  left: 5px;
+}
+
+.submit__button {
+  display: flex;
+  justify-content: center;
+}

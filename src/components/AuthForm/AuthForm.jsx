@@ -3,10 +3,12 @@ import LoginForm from './LoginForm'
 import RegistrForm from './RegistrForm'
 import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { registration } from '../../actions'
 
 
 function AuthForm(events) {
-  const {formSend} = events
+  const {formSend, registration} = events
 
   AuthForm.propTypes = {
     formSend: PropTypes.func.isRequired
@@ -14,7 +16,8 @@ function AuthForm(events) {
   
   const [isLogin, setIsLogin] = useState(true)
 
-  function send(e){
+  
+  function loginSend(e){
     e.preventDefault()
     let send_obj = { sendType: isLogin ? 'LoginForm' : 'RegistrForm' }
     e.target.querySelectorAll('input').forEach(el => send_obj[el.name] = el.value);
@@ -22,8 +25,32 @@ function AuthForm(events) {
     (typeof formSend === 'function') && formSend(send_obj)
   }
 
+  function regSend(e){
+    e.preventDefault();
+
+        const userEmail = e.target.userEmail ? e.target.userEmail.value : null;
+        const userPassword = e.target.userPassword ? e.target.userPassword.value : null;
+        const fullUserName = e.target.userName ? e.target.userName.value : null;
+
+        let name, surname;
+
+        if (fullUserName) {
+            [name, surname] = fullUserName.split(' ', 2);
+        }
+
+        registration(userEmail, userPassword, name, surname);
+  }
+
+  function handleSubmit(e) {
+    if(window.location.pathname === '/') {
+      loginSend(e)
+    } else {
+      regSend(e)
+    }
+  }
+
   return (  
-    <form className='auth__form' onSubmit={send}>
+    <form className='auth__form' onSubmit={handleSubmit}>
       <Switch>
         <Route path='/registration' component={RegistrForm} />
         <Route path='*' component={LoginForm} />
@@ -32,4 +59,4 @@ function AuthForm(events) {
   )
 }
 
-export default AuthForm
+export default connect(null, { registration }) (AuthForm)

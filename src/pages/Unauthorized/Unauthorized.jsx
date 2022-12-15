@@ -6,15 +6,15 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { authenticate } from '../../actions'
 
-function Unauthorized(events) {
-  const {authenticate} = events
+function Unauthorized({ authenticate }) {
+  // const {authenticate, registration} = events
 
   Unauthorized.propTypes = {
     authenticate: PropTypes.func.isRequired
   }
 
   function send(e) {
-    authenticate(e.email, e.password).catch(err => {alert('Не верный логин или пароль')})
+    authenticate(e.email, e.password)
   }
 
   return (  
@@ -32,6 +32,6 @@ function Unauthorized(events) {
 }
 
 export default connect(
-  (state) => ({isLoggedIn: state.AuthReducer.isLoggedIn}),
+  null,
   { authenticate }
 )(Unauthorized)
