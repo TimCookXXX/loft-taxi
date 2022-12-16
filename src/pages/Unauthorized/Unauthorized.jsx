@@ -2,18 +2,19 @@ import React from 'react'
 import AuthForm from '../../components/AuthForm/AuthForm'
 import loginLogo from '../../assets/images/logo-login.svg'
 import './unauthorized.scss'
-import { WithAuth } from '../../contexsts/AuthContext'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { authenticate } from '../../actions'
 
-function Unauthorized(events) {
-  const {logIn} = events
+function Unauthorized({ authenticate }) {
+  // const {authenticate, registration} = events
 
   Unauthorized.propTypes = {
-    logIn: PropTypes.func.isRequired
+    authenticate: PropTypes.func.isRequired
   }
 
   function send(e) {
-    logIn(e.mail, e.password).catch(err => {alert('Не верный логин или пароль')})
+    authenticate(e.email, e.password)
   }
 
   return (  
@@ -30,4 +31,7 @@ function Unauthorized(events) {
   )
 }
 
-export default WithAuth(Unauthorized)
+export default connect(
+  null,
+  { authenticate }
+)(Unauthorized)
