@@ -10,25 +10,25 @@ import { getRouteSaga } from './sagas/routeSaga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-function saveToLocalStorage(state) {
-  try {
-      const serialisedState = JSON.stringify(state)
-      console.log(serialisedState)
-      localStorage.setItem('loftTaxiUserData', serialisedState)
-  } catch (e) {}
-}
+// function saveToLocalStorage(state) {
+//   try {
+//       const serialisedState = JSON.stringify(state)
+//       console.log(serialisedState)
+//       localStorage.setItem('loftTaxiUserData', serialisedState)
+//   } catch (e) {}
+// }
 
-function loadFromLocalStorage() {
-  try {
-      const serialisedState = localStorage.getItem('loftTaxiUserData')
-      if (serialisedState === null) return undefined
-      return JSON.parse(serialisedState)
-  } catch (e) {
-      return undefined
-  }
-}
+// function loadFromLocalStorage() {
+//   try {
+//       const serialisedState = localStorage.getItem('loftTaxiUserData')
+//       if (serialisedState === null) return undefined
+//       return JSON.parse(serialisedState)
+//   } catch (e) {
+//       return undefined
+//   }
+// }
 
-export const store = createStore(rootReducer, loadFromLocalStorage(), applyMiddleware(sagaMiddleware))
+export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
 sagaMiddleware.run(authSaga)
 sagaMiddleware.run(regSaga)
@@ -37,4 +37,4 @@ sagaMiddleware.run(getCardSaga)
 sagaMiddleware.run(getAddresses)
 sagaMiddleware.run(getRouteSaga)
 
-store.subscribe(() => saveToLocalStorage(store.getState()))
+// store.subscribe(() => saveToLocalStorage(store.getState()))

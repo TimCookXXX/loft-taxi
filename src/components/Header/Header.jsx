@@ -16,7 +16,7 @@ function Header(events) {
   }
 
     const navList = [
-      {name: 'map', value: 'Карта', to: '/map'},
+      {name: 'map', value: 'Карта', to: '/'},
       {name: 'profile', value: 'Профиль', to: '/profile'},
       {name: 'out', value: 'Выйти', to: '/'}
     ]

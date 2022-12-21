@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 
 function Authorized(events) {
+  const cardData = localStorage.getItem('card')
   const {logOut} = events
 
   const [content, setContent] = useState('map')
@@ -23,8 +24,12 @@ function Authorized(events) {
   // }
 
   function clickNavItemFunc(e) {
-    if(e.name === 'out') logOut()
-    else setContent(e.name)
+    if(e.name === 'out') {
+      logOut()
+      localStorage.clear()
+    } else {
+      setContent(e.name)
+    }
   }
   return (  
     <div className='main'>

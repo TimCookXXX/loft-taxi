@@ -22,7 +22,6 @@ export const serverRegistration = async (email, password, name, surname) => {
     }
   )
   .then(response => response.json())
-  .then(answer => answer.success)
 }
 
 export const serverGetCard = async (token) => {

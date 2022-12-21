@@ -3,6 +3,7 @@ import './loginForm.scss'
 import Button from '../../ui/Button'
 // import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { Field, ErrorMessage } from 'formik'
 
 function LoginForm(events) {
   // const {changeSing} = events
@@ -12,11 +13,13 @@ function LoginForm(events) {
         <span className="form__title">Войти</span>
         <label className="form__item">
           <span className="form__item--text">Email</span>
-          <input className="form__item--value" name='email' placeholder="mail@mail.ru" type="email"></input>
+          <Field className="form__item--value" name='email' placeholder="mail@mail.ru" type="email" />
+          <ErrorMessage name='email' />
         </label>
         <label className="form__item">
           <span className="form__item--text">Пароль</span>
-          <input className="form__item--value" placeholder="*************" name='password' type="password"></input>
+          <Field className="form__item--value" placeholder="*************" name='password' type="password" />
+          <ErrorMessage name='password' />
         </label>
         <Button className="form__button" type="submit">Войти</Button>
         <div className="form__registration">

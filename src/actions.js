@@ -9,6 +9,7 @@ export const GET_ADDRESSES = 'GET_ADDRESSES'
 export const GET_ADDRESSES_STATE = 'GET_ADDRESSES_STATE'
 export const GET_ROUTE = 'GET_ROUTE'
 export const SAVE_ROUTE = 'SAVE_ROUTE'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
 
 export const logIn = () => ({ type: 'LOG_IN' })
 export const logOut = () => ({ type: 'LOG_OUT' })
@@ -59,4 +60,8 @@ export const getRoute = (address1, address2) => ({
 export const saveRoute = (addresses) => ({
   type: SAVE_ROUTE,
   payload: addresses
+})
+
+export const closeModal = () => ({
+  type: CLOSE_MODAL
 })

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registration } from '../../actions'
+import { Formik, Form } from 'formik'
+import * as Yup from 'yup'
 
 
 function AuthForm(events) {
@@ -49,13 +51,37 @@ function AuthForm(events) {
     }
   }
 
-  return (  
-    <form className='auth__form' onSubmit={handleSubmit}>
+
+
+  return (
+    <Formik
+    initialValues={{
+      email: '',
+      password: '',
+      userEmail: '',
+      userName: '',
+      userPassword: ''
+    }}
+    validationSchema={Yup.object({
+      email: Yup.string()
+      .required('Это поле обязательно для заполнения'),
+      password: Yup.string()
+      .required('Это поле обязательно для заполнения'),
+      userEmail: Yup.string()
+      .required('Это поле обязательно для заполнения'),
+      userName: Yup.string()
+      .required('Это поле обязательно для заполнения'),
+      userPassword: Yup.string()
+      .required('Это поле обязательно для заполнения')
+    })}
+    >  
+    <Form className='auth__form' onSubmit={handleSubmit}>
       <Switch>
         <Route path='/registration' component={RegistrForm} />
         <Route path='*' component={LoginForm} />
       </Switch>
-    </form>
+    </Form>
+    </Formik>
   )
 }
 

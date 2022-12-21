@@ -1,4 +1,4 @@
-import { GET_ADDRESSES_STATE, SAVE_ROUTE } from "../actions";
+import { GET_ADDRESSES_STATE, SAVE_ROUTE, CLOSE_MODAL } from "../actions";
 
 const initialState = { addresses: [], route: [] };
 
@@ -9,6 +9,9 @@ export default function addressesReducer (state = initialState, action) {
         }
         case SAVE_ROUTE: {
             return { ...state, route: [...action.payload]};
+        }
+        case CLOSE_MODAL: {
+            return { ...state, route: [] }
         }
         default:
             return state;

@@ -8,6 +8,9 @@ export function* authenticateSaga(action) {
 
   if(success) {
     yield put(logIn())
+
+    window.localStorage.setItem('loft-email', email)
+    window.localStorage.setItem('loft-pass', password)
   }
 
   token && window.localStorage.setItem('loft', token)

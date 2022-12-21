@@ -4,6 +4,8 @@ import './map.scss'
 import MapOrderForm from './MapOrderForm'
 import { connect } from 'react-redux'
 import ModalInfo from './ModalInfo'
+import ModalCard from './ModalCard'
+import { closeModal } from '../../actions'
 
 export const drawRoute = (map, coordinates) => {
   map.flyTo({
@@ -36,40 +38,48 @@ export const drawRoute = (map, coordinates) => {
   })
 }
 
-function Map({ route, card }) {
+function Map({ route, card, closeModal }) {
 
-  const closeModal = () => {
-    if (route.length !== 0) {
-      console.log(route.length = 0)
-    }
+  const cardData = localStorage.getItem('card')
+
+  const clearRoute = () => {
+    // if (route.length > 0) {
+    //   <MapOrderForm />
+    // }
+    closeModal()
+    map.current.removeLayer('route')
+    map.current.removeSource('route')
   }
 
   const mapContainer = useRef(null)
+  const map = useRef(null)
 
   useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoidGltbGVhZG9mZmljaWFsIiwiYSI6ImNsYXh3Yng2ajA1bWMzc281bWE0bHdwd2IifQ.RIkWGprVV37jsc0WU-Hy7w'
-    const map = new mapboxgl.Map({
+    map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: [30.3056504, 59.9429126],
       zoom: 10
     })
 
-    map?.on('load', async () => {
-      if (route.length > 0) {
-        await drawRoute(map, route)
-      }
-    })
-
     return () => {
-      map.remove()
+      map.current.remove()
     }
+  }, [])
+
+  useEffect(() => {
+      if (route.length > 0) {
+        drawRoute(map.current, route)
+      } else {
+        map.current.flyTo({center: [30.3056504, 59.9429126], zoom: 10})
+      }
   }, [route])
 
   return (  
     <div className='map'>
       <div className='map__app' ref={mapContainer}>
-      {route.length === 0 ? <MapOrderForm /> : <ModalInfo modal={closeModal} />}
+      {route.length ? <ModalInfo modal={clearRoute} /> : cardData ? <MapOrderForm /> : <ModalCard />}
       </div>
     </div>
   )
@@ -77,5 +87,5 @@ function Map({ route, card }) {
 
 export default connect(
   (state) => ({ route: state.addressesReducer.route, card: state.CardData }),
-  undefined
+  { closeModal }
 ) (Map)
