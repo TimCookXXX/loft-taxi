@@ -88,23 +88,23 @@ function Profile({saveCard, getCard}) {
           <div className='profile__right'>
             <div className='profile__item'>
               <label className='profile__label' htmlFor="cardName">Имя владельца</label>
-              <Input id='cardName' name='cardName' type='text' placeholder='Name Lastname' onChange={(e) => {formik.handleChange(e); setCardName(regName(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.cardName} />
+              <Input id='cardName' name='cardName' type='text' placeholder='Name Lastname' onChange={(e) => {formik.handleChange(e); setCardName(regName(e.target.value)) }} onBlur={formik.handleBlur} value={cardName} />
               {formik.touched.cardName && formik.errors.cardName ? (<div>{formik.errors.cardName}</div>) : null}
             </div>
             <div className='profile__item'>
               <label className='profile__label' htmlFor="cardNumber">Номер карты</label>
-              <Input id='cardNumber' name='cardNumber' type="text" placeholder='5545  2300  3432  4521' onChange={(e) => {formik.handleChange(e); setCardNumber(regCard(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.cardNumber}  />
+              <Input id='cardNumber' name='cardNumber' type="text" placeholder='5545  2300  3432  4521' onChange={(e) => {formik.handleChange(e); setCardNumber(regCard(e.target.value)) }} onBlur={formik.handleBlur} value={cardNumber} />
               {formik.touched.cardNumber && formik.errors.cardNumber ? (<div>{formik.errors.cardNumber}</div>) : null}
             </div>
             <div className='profile__card--info'>
               <div className='profile__item'>
                 <label htmlFor="expiryDate" className='profile__label'>MM/YY</label>
-                <Input id='expiryDate' name='expiryDate' type='text' placeholder='05/12' onChange={(e) => {formik.handleChange(e); setExpiryDate(regDate(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.expiryDate} />
+                <Input id='expiryDate' name='expiryDate' type='text' placeholder='05/12' onChange={(e) => {formik.handleChange(e); setExpiryDate(regDate(e.target.value)) }} onBlur={formik.handleBlur} value={expiryDate} />
                 {formik.touched.expiryDate && formik.errors.expiryDate ? (<div>{formik.errors.expiryDate}</div>) : null}
               </div>
               <div className='profile__item'>
                 <label htmlFor="cvc" className='profile__label'>CVC</label>
-                <Input id='cvc' name='cvc' type="text" placeholder='***' onChange={(e) => {formik.handleChange(e); setCvc(regCVC(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.cvc} />
+                <Input id='cvc' name='cvc' type="text" placeholder='***' onChange={(e) => {formik.handleChange(e); setCvc(regCVC(e.target.value)) }} onBlur={formik.handleBlur} value={cvc} />
                 {formik.touched.cvc && formik.errors.cvc ? (<div>{formik.errors.cvc}</div>) : null}
               </div>
             </div>
