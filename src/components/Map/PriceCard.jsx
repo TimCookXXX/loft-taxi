@@ -6,8 +6,18 @@ import './priceCard.scss'
 
 function PriceCard({ info, car, changeCar }) {
   const images = [carOne, carTwo, carThree]
+  const active = 'car active'
+  const nonActive = 'car'
+  function changePlan() {
+    if(info.title === car) {
+      return active
+    } else {
+      return nonActive
+    }
+  }
+
   return (  
-    <div className='car' onClick={() => changeCar(info.title)}>
+    <div className={changePlan()} onClick={() => changeCar(info.title)}>
       <div className='car__info'>
         <div className='car__title'>{info.title}</div>
         <div className='car__subtitle'>Стоимость</div>

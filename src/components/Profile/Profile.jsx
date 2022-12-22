@@ -18,17 +18,17 @@ function Profile({saveCard, getCard}) {
   const saveCardData = localStorage.getItem('card')
   const data = JSON.parse(saveCardData)
 
-  // const placeHolder = (preview, value, simbol) => {
-  //   Array.from(value).forEach(el => preview = preview.replace(simbol, el) )
+  const placeHolder = (preview, value, simbol) => {
+    Array.from(value).forEach(el => preview = preview.replace(simbol, el) )
   
-  //   return preview.replace(/(\d?)\D+$/, '$1')
-  // }
+    return preview.replace(/(\d?)\D+$/, '$1')
+  }
   
 
-  // const regName = (value) => value.replace(/\d/g, '')
-  // const regCVC = (value) => value.replace(/\D/g, '').substr(0, 3)
-  // const regDate = (value) => placeHolder('**/**', value.replace(/\D/g, ''), '*')
-  // const regCard = (value) => placeHolder('**** **** **** ****', value.replace(/\D/g, ''), '*')
+  const regName = (value) => value.replace(/\d/g, '')
+  const regCVC = (value) => value.replace(/\D/g, '').substr(0, 3)
+  const regDate = (value) => placeHolder('**/**', value.replace(/\D/g, ''), '*')
+  const regCard = (value) => placeHolder('**** **** **** ****', value.replace(/\D/g, ''), '*')
 
   const [cardNumber, setCardNumber] = useState(data?.cardNumber)
   const [expiryDate, setExpiryDate] = useState(data?.expiryDate)
@@ -88,23 +88,23 @@ function Profile({saveCard, getCard}) {
           <div className='profile__right'>
             <div className='profile__item'>
               <label className='profile__label' htmlFor="cardName">Имя владельца</label>
-              <Input id='cardName' name='cardName' type='text' placeholder='Name Lastname' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardName} />
+              <Input id='cardName' name='cardName' type='text' placeholder='Name Lastname' onChange={(e) => {formik.handleChange(e); setCardName(regName(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.cardName} />
               {formik.touched.cardName && formik.errors.cardName ? (<div>{formik.errors.cardName}</div>) : null}
             </div>
             <div className='profile__item'>
               <label className='profile__label' htmlFor="cardNumber">Номер карты</label>
-              <Input id='cardNumber' name='cardNumber' type="text" placeholder='5545  2300  3432  4521' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cardNumber}  />
+              <Input id='cardNumber' name='cardNumber' type="text" placeholder='5545  2300  3432  4521' onChange={(e) => {formik.handleChange(e); setCardNumber(regCard(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.cardNumber}  />
               {formik.touched.cardNumber && formik.errors.cardNumber ? (<div>{formik.errors.cardNumber}</div>) : null}
             </div>
             <div className='profile__card--info'>
               <div className='profile__item'>
                 <label htmlFor="expiryDate" className='profile__label'>MM/YY</label>
-                <Input id='expiryDate' name='expiryDate' type='text' placeholder='05/12' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.expiryDate} />
+                <Input id='expiryDate' name='expiryDate' type='text' placeholder='05/12' onChange={(e) => {formik.handleChange(e); setExpiryDate(regDate(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.expiryDate} />
                 {formik.touched.expiryDate && formik.errors.expiryDate ? (<div>{formik.errors.expiryDate}</div>) : null}
               </div>
               <div className='profile__item'>
                 <label htmlFor="cvc" className='profile__label'>CVC</label>
-                <Input id='cvc' name='cvc' type="text" placeholder='***' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.cvc} />
+                <Input id='cvc' name='cvc' type="text" placeholder='***' onChange={(e) => {formik.handleChange(e); setCvc(regCVC(e.target.value)) }} onBlur={formik.handleBlur} value={formik.values.cvc} />
                 {formik.touched.cvc && formik.errors.cvc ? (<div>{formik.errors.cvc}</div>) : null}
               </div>
             </div>
