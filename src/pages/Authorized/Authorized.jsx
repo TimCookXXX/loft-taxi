@@ -18,10 +18,6 @@ function Authorized(events) {
     logOut: PropTypes.func.isRequired
   }
   
-  // const pages = {
-  //   profile: <Profile />
-  // }
-
   function clickNavItemFunc(e) {
     if(e.name === 'out') logOut()
     else setContent(e.name)
@@ -35,17 +31,6 @@ function Authorized(events) {
           <PrivateRoute path='/profile' component={Profile} />
           <Route path='/' />
         </Switch>
-        {/* {
-          pages[content] && (
-            <div className='window' onClick={() => setContent('map')}>
-              <div className='window__content' onClick={(e) => e.stopPropagation()}>
-                {
-                  pages[content]
-                }
-              </div>
-            </div>
-          )
-        } */}
       </div>
     </div>
   )

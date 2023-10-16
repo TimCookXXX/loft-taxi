@@ -2,7 +2,6 @@ import React from 'react'
 import './profile.scss'
 import svgCardOne from '../../assets/images/svgCardOne.svg'
 import svgCardTwo from '../../assets/images/svgCardTwo.svg'
-import svgCardThree from '../../assets/images/svgCardThree.svg'
 import Button from '../../ui/Button'
 import { connect } from 'react-redux'
 import { saveCard } from '../../actions'
@@ -66,10 +65,6 @@ function Profile({saveCard, getCard}) {
             <div className='card__preview'>{cardNumber}</div>
             <div className='card__bottom'>
               <img src={svgCardTwo} alt="svgCardTwo" />
-              <div className='card__bottom--duplicate'>
-                <img className='card-svg' src={svgCardThree} alt="svgCardThree" />
-                <img className='card-svg--two' src={svgCardThree} alt="svgCardThree" />
-              </div>
             </div>
           </div>
         </div>

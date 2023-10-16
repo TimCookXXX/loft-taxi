@@ -1,8 +1,16 @@
+@import '../../vars.scss';
+
 .form__wrapper {
   position: absolute;
   z-index: 1000;
   top: 40px;
   left: 40px;
+
+  @include tablets {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+  }
 
   .select {
     height: 40px;
@@ -38,12 +46,20 @@
     background: #FFFFFF;
     box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    @include tablets {
+      width: 100vw;
+    }
   }
 
   .submit__form {
     background: #FFFFFF;
     box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -53,6 +69,7 @@
       width: 100%;
       display: flex;
       justify-content: space-evenly;
+      margin-bottom: 10px;
     }
   }
 }

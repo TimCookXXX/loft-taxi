@@ -1,3 +1,5 @@
+@import '../../vars.scss';
+
 .modal {
   position: absolute;
   z-index: 1000;
@@ -8,11 +10,21 @@
   border-radius: 10px;
   padding: 40px;
 
+  @include tablets {
+    left: 0;
+    right: 0;
+  }
+
   &__title {
     font-weight: 700;
     font-size: 36px;
     line-height: 42px;
     margin-bottom: 18px;
+
+    @include tablets {
+      font-size: 21px;
+      text-align: center;
+    }
   }
 
   &__sub {
@@ -21,6 +33,10 @@
     line-height: 21px;
     color: #7B7B7B;
     margin-bottom: 20px;
+
+    @include tablets {
+      font-size: 16px;
+    }
   }
 }
 

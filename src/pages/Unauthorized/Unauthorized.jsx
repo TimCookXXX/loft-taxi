@@ -1,7 +1,6 @@
 import React from 'react'
 import AuthForm from '../../components/AuthForm/AuthForm'
 import loginLogo from '../../assets/images/logo-login.svg'
-import './unauthorized.scss'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { authenticate } from '../../actions'
